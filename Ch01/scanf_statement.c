@@ -1,16 +1,16 @@
 /*
 * Author: Boitumelo Phetla
-* How to compile on Terminal	
+* How to compile on Terminal
 * gcc -Wall -o program program.c
 * ./program
-*/ 
+*/
 #include <stdio.h>
 
 int main(void){
-	char name[32] = "";
-	
-	printf("What is your name: ");
-	scanf("%c", &name);
-	printf("Hi, ", name);
-	return(0);	
+	int num = 0;	//initialization
+
+	printf("Enter a number: ");
+	scanf("%d", &num);
+	printf("Number: %d\n", num);
+	return(0);
 	}
