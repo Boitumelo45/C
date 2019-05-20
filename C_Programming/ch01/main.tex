@@ -405,6 +405,127 @@ Calling static method: 4
 Calling static method: 5
 \end{lstlisting}
 
+\section{Control Flow}
+
+\subsection{Simple If-Else statement}
+
+\begin{lstlisting}
+#include <stdio.h>
+
+void num(int age);
+
+int main(void){
+
+  int age;
+  printf("Enter your age: ");
+  scanf("%d", &age);
+  num(age);
+
+  return 0;
+}
+
+void num(int age){
+  if (age >= 18){
+    printf("Welcome.\n");
+  }else{
+    printf("Sorry, you are under age.\n");
+  }
+}
+\end{lstlisting}
+
+\subsection{Switch Statement}
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <math.h>
+
+int computeAggregate();
+
+int main(){
+
+  int aggregate = 0;
+  aggregate = computeAggregate();
+
+  switch(aggregate){
+        case 100:
+        case 95:
+               printf("A+\n");
+               break;
+        case 90:
+        case 85:
+                printf("A-\n");
+                break;
+        case 80:
+        case 75:
+                printf("B+\n");
+                break;
+        case 70:
+        case 65:
+                printf("B-\n");
+                break;
+        case 60:
+        case 55:
+                printf("C+\n");
+                break;
+        case 50:
+        case 45:
+                printf("C-\n");
+                break;
+        case 40:
+        case 35:
+                printf("D+\n");
+                break;
+        case 30:
+        case 25:
+                printf("D-\n");
+                break;
+        case 20:
+        case 15:
+                printf("E+\n");
+                break;
+        default:
+                printf("E-.\n");
+                break;
+  }
+  return 0;
+}
+
+int computeAggregate(){
+
+    float total = 0.0;
+    int count = 0;
+    float grade = 0.0;
+    printf("Enter a grade you obtained for a module: [-1 to exit]: ");
+    scanf("%f", &grade);
+
+    while(grade > 0){
+        total += grade;
+        count++;
+        printf("Enter a grade you obtained for a module: [-1 to exit]: ");
+        scanf("%f", &grade);
+    }
+
+    //compute average
+    printf("total = %.2f, count = %d\n", total, count);
+    printf("Aggregate = %.2f%%\n", (total/(count)));
+    return (int)(total/(count));
+}
+
+/*Output*/
+Enter a grade you obtained for a module: [-1 to exit]: 67
+Enter a grade you obtained for a module: [-1 to exit]: 87
+Enter a grade you obtained for a module: [-1 to exit]: 89
+Enter a grade you obtained for a module: [-1 to exit]: 95
+Enter a grade you obtained for a module: [-1 to exit]: 100
+Enter a grade you obtained for a module: [-1 to exit]: 45
+Enter a grade you obtained for a module: [-1 to exit]: -1
+total = 483.00, count = 6
+Aggregate = 80.50%
+B+
+\end{lstlisting}
+
+\section{Functions and Program Stuctures}
+
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
