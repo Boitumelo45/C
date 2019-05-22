@@ -17,7 +17,7 @@ int main(void){
   scanf("%f", &m);
 
   while(m > 0){
-      printf("m = %.2f kg, e = %.10e m/s\n", m, e(m));
+      printf("m = %.2f kg, e = %.3e m/s\n", m, e(m));
       printf("To terminate the programe enter [-1]\n");
       printf("Enter mass [kg]: ");
       scanf("%f", &m);

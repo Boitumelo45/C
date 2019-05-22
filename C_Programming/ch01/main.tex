@@ -419,7 +419,7 @@ int main(void){
   int age;
   printf("Enter your age: ");
   scanf("%d", &age);
-  num(age);
+  num(age); //calling num() function
 
   return 0;
 }
@@ -435,6 +435,10 @@ void num(int age){
 
 \subsection{Switch Statement}
 
+
+The switch statement is a multi-way decision that tests whether an expression matches one of a number of constant integer values, and branches accordingly .
+
+
 \begin{lstlisting}
 #include <stdio.h>
 #include <math.h>
@@ -445,41 +449,109 @@ int main(){
 
   int aggregate = 0;
   aggregate = computeAggregate();
-
+  printf("Aggregate = %d%%\n", aggregate);
   switch(aggregate){
         case 100:
+        case 99:
+        case 98:
+        case 97:
+        case 96:
         case 95:
+        case 94:
+        case 93:
+        case 92:
+        case 91:
                printf("A+\n");
                break;
         case 90:
+        case 89:
+        case 88:
+        case 87:
+        case 86:
         case 85:
+        case 84:
+        case 83:
+        case 82:
+        case 81:
                 printf("A-\n");
                 break;
         case 80:
+        case 79:
+        case 78:
+        case 77:
+        case 76:
         case 75:
+        case 74:
+        case 73:
+        case 72:
+        case 71:
                 printf("B+\n");
                 break;
         case 70:
+        case 69:
+        case 68:
+        case 67:
+        case 66:
         case 65:
+        case 64:
+        case 63:
+        case 62:
+        case 61:
                 printf("B-\n");
                 break;
         case 60:
+        case 59:
+        case 58:
+        case 57:
+        case 56:
         case 55:
+        case 54:
+        case 53:
+        case 52:
+        case 51:
                 printf("C+\n");
                 break;
         case 50:
+        case 49:
+        case 48:
+        case 47:
+        case 46:
         case 45:
+        case 44:
+        case 43:
+        case 42:
+        case 41:
                 printf("C-\n");
                 break;
         case 40:
+        case 39:
+        case 38:
+        case 37:
+        case 36:
         case 35:
+        case 34:
+        case 33:
+        case 32:
+        case 31:
                 printf("D+\n");
                 break;
         case 30:
+        case 29:
+        case 28:
+        case 27:
+        case 26:
         case 25:
+        case 24:
+        case 23:
+        case 22:
+        case 21:
                 printf("D-\n");
                 break;
         case 20:
+        case 19:
+        case 18:
+        case 17:
+        case 16:
         case 15:
                 printf("E+\n");
                 break;
@@ -508,8 +580,10 @@ int computeAggregate(){
     //compute average
     printf("total = %.2f, count = %d\n", total, count);
     printf("Aggregate = %.2f%%\n", (total/(count)));
-    return (int)(total/(count));
+    printf("Passed = %d%%\n", (int)(total/(count)));
+    return (int)(ceil(total/(count), 2));
 }
+
 
 /*Output*/
 Enter a grade you obtained for a module: [-1 to exit]: 67
@@ -524,8 +598,268 @@ Aggregate = 80.50%
 B+
 \end{lstlisting}
 
+\subsection{Int main Function}
+
+The main function comes in two forms:
+
+\begin{itemize}
+	\item int main (void)
+	\item int main (int argc, char *argv[])
+\end{itemize}
+
+\subsection{Dealing with characters}
+
+\begin{enumerate}
+	\item types
+	\item variables
+	\item identifiers
+	\item pointers
+	\item arrays
+	\item subscripts
+	\item $(NULL)$
+\end{enumerate}
+
+A C string is usually declared as an array of char. However, an array of char is NOT by itself a C string. A valid C string requires the presence of a terminating "null character" (a character with ASCII value 0, usually represented by the character literal "\\0").
+\newline
+\newline
+Since char is a built-in data type, no header file is required to create a C string. The C library header file <cstring> contains a number of utility functions that operate on C strings.
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(int argc, char *argv[]){
+
+	int count = 0;
+	char *string = "Hello, world!\n";
+
+	/*print each character until we reach \0*/
+	while(string[count] != '\0'){
+		printf("%c", string[count++]);
+	}
+	return 0;
+}
+
+/*Ouput*/
+Hello, world!
+\end{lstlisting}
+
+C String (or array of chars).
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main(int argc, char *argv[]){
+
+	char *str = "John Doe";
+
+	printf("%s\n", str);
+
+	return 0;
+}
+
+/*Output*/
+John Doe
+\end{lstlisting}
+
+Constant variables cannot be mutated.
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <math.h>
+#define PI 3.1416
+float area(float radius);
+
+int main(int argc, char * somethingFishy[]){
+
+  const float r = 2.13;
+  printf("Area = %.2f\n", area(r));
+  //r = 1.4; <-- will give an error since r cannot be mutated
+}
+
+float area(float radius){
+  return pow(PI, 2) * radius;
+}
+
+/*Output*/
+Area = 21.02
+\end{lstlisting}
+
+Goto function.
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <stdlib.h> //rand()
+#include <string.h> //memset()
+#define SIZE 1000
+enum{
+  VAL1='a', VAL2='b', VAL3='z'
+};
+
+int main(int argc, char *argv[]){
+
+  char a[SIZE], b[SIZE];
+  int i, j;
+
+  /* Initialise arrays so they are different from each other */
+  memset(a, VAL1, SIZE);
+  memset(b, VAL2, SIZE);
+
+  /*Get size of array*/
+  printf("size of a = %lu, b = %lu\n", sizeof(a)/sizeof(int), sizeof(b)/sizeof(int));
+
+
+  /* Set a random element in each array to VALUE */
+  a[rand()%SIZE] = VAL3;
+  b[rand()%SIZE] = VAL3;
+  printf("Random number: %d\n", rand()%SIZE);
+
+  /* Search for location of common elements */
+  for(i = 0; i < SIZE; ++i){
+    for(j = 0; j < SIZE; ++j){
+      if (a[i] == b[j]){
+        goto found;
+      }
+    }
+  }
+
+  /* Error: match not found */
+  printf("Did not find any common elements!!\n");
+  return 0;
+
+found: /*Results on success*/
+      printf("a[%d] = %c, b[%d] = %c\n", i, a[i], j, b[j]);
+
+}
+
+/*Output*/
+size of a = 250, b = 250
+Random number: 73
+a[807] = z, b[249] = z
+\end{lstlisting}
+
+Random function.
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 1000
+
+int main(int argc, const char *argv[]){
+
+  for(int i = 0; i < SIZE; ++i){
+    if((rand()) > 212e7){
+      printf("[%d] %d, %d\n", i, rand(), rand()%SIZE);
+    }
+  }
+
+  return 0;
+}
+
+/*Output*/
+[38] 784558821, 967
+[86] 1908194298, 188
+[231] 462851407, 15
+[240] 329863108, 249
+[284] 552265483, 447
+[370] 1493959603, 897
+[622] 2076422667, 519
+[626] 1373365825, 819
+[869] 1499086275, 321
+\end{lstlisting}
+
+
 \section{Functions and Program Stuctures}
 
+Scalable software design involves breaking a problem into sub-problems, which can each be tackled separately. Functions are the key to enabling such a division and separation of concerns.
+Writing programs as a collection of functions has manifold benefits, including the following.
+\newline
+\begin{itemize}
+	\item Functions allow a program to be split into a set of subproblems which, in turn, may be further split into smaller subproblems. This divide-and-conquer approach means that small parts of the program can be written, tested, and debugged in isolation without interfering with other parts of the program.
+\newline
+	\item Functions can wrap-up difficult algorithms in a simple and intuitive interface, hiding the implementation details, and enabling a higher-level view of the algorithm’s purpose and use.
+\newline
+	\item Functions avoid code duplication. If a particular segment of code is required in several places, a function provides a tidy means for writing the code only once. This is of considerable benefit if the code segment is later altered.
+\end{itemize}
+
+\textbf{Factorial function, using assert macro.}
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <assert.h>
+int factorial(int a);
+int main(int argc, const char *argv[]){
+
+  int num;
+  printf("Enter a number: ");
+  scanf("%d", &num);
+  printf("factorial(%d) = %d\n", num, factorial(num));
+  return 0;
+}
+
+int factorial(int a){
+    int result = 1;
+    assert(a>=0); //check if a >= zero
+    while(a){
+      result *= a;
+      a--;
+    }
+
+    return result;
+}
+
+/*Output*/
+Enter a number: -1
+Assertion failed: (a>=0), function factorial, file assert.c, line 15.
+Abort trap: 6
+\end{lstlisting}
+
+\textbf{Palindrome function}
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <string.h>
+
+int palindrome(char *str);
+
+int main(int argc, const char *argv[]){
+
+  char word[100];
+
+  printf("Enter a word: ");
+
+  gets(word);
+
+  int result = palindrome(word);
+
+  if (result > 0){
+    printf("The word is a palindrome!!\n");
+  }else{
+    printf("The word is not a palindrome.\n");
+  }
+  return 0;
+}
+
+int palindrome(char *str){
+
+  int size = strlen(str); //string length
+
+  for(int i = 0; i < size; i++){
+    if(str[(size-1) - i] != str[i]){
+        return -1;  //return false
+    }else{
+        continue; //do not break until '\0'
+    }
+  }
+  return 1; //return true
+}
+
+/*Output*/
+
+warning: this program uses gets(), which is unsafe.
+Enter a word: racecar
+The word is a palindrome!!
+
+\end{lstlisting}
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
